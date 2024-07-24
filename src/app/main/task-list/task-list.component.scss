@@ -1,0 +1,25 @@
+.outer-container{
+    display: flex;
+    flex-direction: column;
+    
+    .body-content{
+        display: flex;
+        height:calc(100vh - 125px);
+    }
+    .page-header{
+        height: 60px;
+        padding: 0 50px;
+        color: rgba(0, 0, 0, .85);
+        background: #001529;
+        h3{
+            color: #fafafa;
+        }
+    }
+    .page-footer{
+        padding: 24px 20px;
+        color: rgba(0, 0, 0, .85);
+        font-size: 14px;
+        background: #f0f2f5;
+        text-align: center;
+    }
+}
