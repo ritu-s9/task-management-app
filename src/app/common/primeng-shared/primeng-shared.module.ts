@@ -4,11 +4,13 @@ import { PanelModule } from 'primeng/panel';
 import { ButtonModule } from 'primeng/button';
 import { MenubarModule } from 'primeng/menubar';
 import { CardModule } from 'primeng/card';
+import { TableModule } from 'primeng/table';
 const modules:any = [
   PanelModule,
   ButtonModule,
   MenubarModule,
-  CardModule
+  CardModule,
+  TableModule
 ];
 
 @NgModule({

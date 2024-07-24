@@ -3,12 +3,27 @@
         <h3>Task Management App</h3>
     </div>
     <div class="body-content">
-        <p-card header="Title" style="margin-top: 10px;">
-            
+        <p-card class="mt-10 content-card">
+            <div class="card-upper-row"></div>
+            <div class="card-middle-row">
+                    <p-table  [tableStyle]="{'min-width': '50rem'}">
+                        <ng-template pTemplate="header" let-columns>
+                            <tr>
+                                <th>Name </th>
+                                <th>Price</th>
+                                <th>Category</th>
+                                <th>Quantity</th>
+                                <th>Status</th>
+                                <th>Reviews</th>
+                            </tr>
+                        </ng-template>
+                        
+                    </p-table>
+            </div>
         </p-card>
     </div>
     <div class="page-footer">
-        @2024 task-management-app
+        2024 task-management-app
     </div>
 </div>
 
