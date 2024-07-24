@@ -10,6 +10,13 @@
             .card-middle-row{
                 display: flex;
                 justify-content: center;
+                .action-btns{
+                    display: flex;
+                    justify-content: flex-start;
+                    flex-flow: wrap;
+                    gap:1px;
+                    margin-bottom: 4px;
+                }
             }
         }
     }

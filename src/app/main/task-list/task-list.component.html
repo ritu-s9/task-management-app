@@ -6,18 +6,34 @@
         <p-card class="mt-10 content-card">
             <div class="card-upper-row"></div>
             <div class="card-middle-row">
-                    <p-table  [tableStyle]="{'min-width': '50rem'}">
-                        <ng-template pTemplate="header" let-columns>
+                    <p-table  [tableStyle]="{'min-width': '50rem'}" [value]="tasksList">
+                        <ng-template pTemplate="header">
                             <tr>
-                                <th>Name </th>
-                                <th>Price</th>
-                                <th>Category</th>
-                                <th>Quantity</th>
+                                <th>Task </th>
+                                <th>Description</th>
                                 <th>Status</th>
-                                <th>Reviews</th>
+                                <th>Action</th>
                             </tr>
                         </ng-template>
-                        
+                        <ng-template pTemplate="body" let-taskItem>
+                            <tr>
+                                <td>{{ taskItem.taskName }}</td>
+                                <td>{{taskItem.taskDescription}}</td>
+                                <td>{{taskItem.completed ? "Completed":"Pending"}}</td>
+                                <td>
+                                    <ng-container  *ngIf="taskItem.completed">
+                                        <p-button icon="pi pi-check" styleClass="p-button-rounded p-button-success p-button-text"></p-button>
+                                    </ng-container>
+                                    <ng-container  *ngIf="!taskItem.completed">
+                                        <div class="action-btns">
+                                            <p-button icon="pi pi-clock" styleClass="p-button-rounded p-button-secondary p-button-text"></p-button>
+                                            <p-button icon="pi pi-pencil" styleClass="p-button-rounded p-button-secondary p-button-text"></p-button>
+                                            <p-button icon="pi pi-trash" styleClass="p-button-rounded p-button-secondary p-button-text"></p-button>
+                                        </div>
+                                    </ng-container>
+                                </td>
+                            </tr>
+                        </ng-template>
                     </p-table>
             </div>
         </p-card>
