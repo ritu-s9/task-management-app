@@ -5,6 +5,7 @@ import { MainRoutingModule } from './main-routing.module';
 import { PrimengSharedModule } from '../common/primeng-shared/primeng-shared.module';
 import { TaskListComponent } from './task-list/task-list.component';
 import { AddTaskComponent } from './task-list/add-task/add-task.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { AddTaskComponent } from './task-list/add-task/add-task.component';
   imports: [
     CommonModule,
     MainRoutingModule,
-    PrimengSharedModule
+    PrimengSharedModule,
+    ReactiveFormsModule
   ]
 })
 export class MainModule { }

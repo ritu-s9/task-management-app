@@ -10,9 +10,16 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
 import { MessagesModule } from 'primeng/messages';
 import { TooltipModule } from 'primeng/tooltip';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { PasswordModule } from 'primeng/password';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { DividerModule } from 'primeng/divider';
 const modules:any = [
   PanelModule,
   ButtonModule,
+  InputTextareaModule,
+  DividerModule,
   MenubarModule,
   CardModule,
   TableModule,
@@ -20,7 +27,10 @@ const modules:any = [
   ConfirmDialogModule,
   ToastModule,
   MessagesModule,
-  TooltipModule
+  TooltipModule,
+  DynamicDialogModule,
+  PasswordModule,
+  InputTextModule
 ];
 
 @NgModule({

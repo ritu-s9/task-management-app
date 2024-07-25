@@ -1,1 +1,21 @@
-<p>add-task works!</p>
+<div class="form-outer-container">
+    <form [formGroup]="addTaskForm" class="add-task-form" (ngSubmit)="submitCreatedTaskData()">
+        <div class="form-field-div">
+            <label htmlFor="taskName">Title:</label>
+            <input type="text" pInputText formControlName="taskName" placeholder="Type here task name..."/>
+        </div>
+        <div *ngIf="addTaskForm.get('taskName')?.invalid && addTaskForm.get('taskName')?.touched">
+            <small *ngIf="addTaskForm.get('taskName')?.hasError('required')" style="color: red;">Task name is required.</small>
+        </div>
+        <br/>
+        <div class="form-field-div">
+            <label htmlFor="taskDescription">Description:</label>
+            <textarea rows="3" cols="60" pInputTextarea [autoResize]="true" formControlName="taskDescription"  placeholder="Type here description..."></textarea>
+        </div>
+        <div *ngIf="addTaskForm.get('taskDescription')?.invalid && addTaskForm.get('taskDescription')?.touched">
+            <small *ngIf="addTaskForm.get('taskDescription')?.hasError('required')" style="color: red;">Task name is required.</small>
+        </div>
+       <p-divider></p-divider>
+        <p-button label="Submit" styleClass="p-button-raised" type="Submit"></p-button>
+    </form>
+</div>
