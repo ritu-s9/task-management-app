@@ -20,8 +20,8 @@ private _http = inject(HttpClient);
     return this._http.post(this._apiUrl, item);
   }
 
-  updateTasks(id:number):Observable<any>{
-    return this._http.get(`${this._apiUrl}/${id}`);
+  updateTasks(id:number,data:any):Observable<any>{
+    return this._http.put(`${this._apiUrl}/${id}`,data);
   }
 
 

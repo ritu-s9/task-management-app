@@ -73,6 +73,46 @@ export class TaskListComponent implements OnInit {
       });
     }
   }
+
+  updateTask(item:any){
+    this.ref = this._dialogService.open(AddTaskComponent,{
+      header :'Update Task',
+      width: '50%',
+      baseZIndex: 10000,
+      maximizable : true,
+      resizable: true,
+      draggable:true,
+      data: {
+        formIdentityFlagButton: 'Update',
+        rawdata: item
+    },
+    });
+    
+    this.ref.onClose.subscribe((task: Task) => {
+      if (task) {
+        this._manageTasksService.updateTasks(task.id,task).subscribe({
+          next: (res) => {
+            this.getAllTasks();
+            this.messageShowingFlag = true;
+            this.messages = [
+              {
+                severity: 'success',
+                summary: 'Success',
+                detail: 'Successfully updated',
+              },
+            ];
+            setTimeout(() => {
+              this.messageShowingFlag = false;
+            }, 2000);
+           
+          },
+          error: (err) => {
+            // Handle error if needed
+          },
+        });
+      }
+  });
+  }
   
 
   addTask(){
@@ -82,8 +122,13 @@ export class TaskListComponent implements OnInit {
       baseZIndex: 10000,
       maximizable : true,
       resizable: true,
-      draggable:true
+      draggable:true,
+
+      data: {
+        formIdentityFlagButton: 'Submit'
+    },
     });
+    
 
     this.ref.onClose.subscribe((task: Task) => {
       if (task) {

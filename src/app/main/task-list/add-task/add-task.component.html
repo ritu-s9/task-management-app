@@ -16,6 +16,6 @@
             <small *ngIf="addTaskForm.get('taskDescription')?.hasError('required')" style="color: red;">Task name is required.</small>
         </div>
        <p-divider></p-divider>
-        <p-button label="Submit" styleClass="p-button-raised" type="Submit"></p-button>
+        <p-button [label]="formIdentityFlagButton" styleClass="p-button-raised" type="Submit"></p-button>
     </form>
 </div>
