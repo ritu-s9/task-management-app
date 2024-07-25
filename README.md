@@ -1,6 +1,6 @@
 #  Task Management App
 
-This project is a Task Management App built using Angular 15. It leverages a JSON server for data storage and adheres to the OpenAPI Specification to ensure a  API design.
+This project is a Task Management App built using Angular 15. It leverages a node server for in memory data storage and adheres to the OpenAPI Specification to ensure a  API design.
 
 
 ## Author
@@ -12,7 +12,7 @@ This project is a Task Management App built using Angular 15. It leverages a JSO
 
 **Client:** Angular,PrimeNg
 
-**Server:** Json Server
+**Server:** Node using in memory storage
 
 
 ## API Reference
