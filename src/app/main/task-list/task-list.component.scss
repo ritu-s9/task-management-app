@@ -7,9 +7,13 @@
         height:calc(100vh - 125px);
         .content-card{
             width:100%;
+           p-card{
+            height: 100%;
+           }
             .card-middle-row{
                 display: flex;
                 justify-content: center;
+                gap: 20px;
                 .action-btns{
                     display: flex;
                     justify-content: flex-start;

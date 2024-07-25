@@ -3,8 +3,10 @@
         <h3>Task Management App</h3>
     </div>
     <div class="body-content">
-        <p-card class="mt-10 content-card">
-            <div class="card-upper-row"></div>
+        <div class="mt-20 content-card">
+            <div class="card-upper-row" *ngIf="messageShowingFlag">
+                <p-messages [(value)]="messages" [enableService]="false" [closable]="false"></p-messages>
+            </div>
             <div class="card-middle-row">
                     <p-table  [tableStyle]="{'min-width': '50rem'}" [value]="tasksList">
                         <ng-template pTemplate="header">
@@ -27,16 +29,25 @@
                                     <ng-container  *ngIf="!taskItem.completed">
                                         <div class="action-btns">
                                             <p-button icon="pi pi-clock" styleClass="p-button-rounded p-button-secondary p-button-text"></p-button>
-                                            <p-button icon="pi pi-pencil" styleClass="p-button-rounded p-button-secondary p-button-text"></p-button>
-                                            <p-button icon="pi pi-trash" styleClass="p-button-rounded p-button-secondary p-button-text"></p-button>
+                                            <p-button icon="pi pi-pencil" styleClass="p-button-rounded p-button-secondary p-button-text"  pTooltip="Edit" tooltipPosition="top" placeholder="Top"></p-button>
+                                            <div style="display: flex;justify-content: center;gap:2px;">
+                                               
+                                                <p-confirmDialog [style]="{width: '50vw'}"></p-confirmDialog> 
+                                                <!-- <p-toast></p-toast> -->
+                                                 
+                                            <p-button icon="pi pi-trash"  pTooltip="Delete" tooltipPosition="top" placeholder="Top" styleClass="p-button-rounded p-button-secondary p-button-text" (click)="deleteTask(taskItem.id)"
+                                            ></p-button>
+                                        </div>
+                                        
                                         </div>
                                     </ng-container>
                                 </td>
                             </tr>
                         </ng-template>
                     </p-table>
+                    <p-button icon="pi pi-plus" styleClass="p-button-rounded p-button-info  p-button-text p-button-raised" pTooltip="Add task" tooltipPosition="top" placeholder="Top"></p-button>
             </div>
-        </p-card>
+        </div>
     </div>
     <div class="page-footer">
         2024 task-management-app
