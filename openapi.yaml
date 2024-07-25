@@ -2,6 +2,8 @@ openapi: 3.0.0
 info:
   title: Tasks API
   version: 1.0.0
+servers:
+  - url: http://localhost:3000/tasks
 paths:
   /tasks:
     get:
@@ -70,10 +72,14 @@ paths:
           description: Task deleted
 components:
   schemas:
-    Item:
+    Tasks:
       type: object
       properties:
         id:
-          type: integer
-        name:
+          type: number
+        taskName:
           type: string
+        taskDescription:
+          type: string
+        completed: 
+          type: boolean
