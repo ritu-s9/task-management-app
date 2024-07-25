@@ -5,6 +5,7 @@ import { ManageTaskService } from 'src/app/common/services/manage-task.service';
 import { Message } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { AddTaskComponent } from './add-task/add-task.component';
+import { ViewTaskComponent } from './view-task/view-task.component';
 @Component({
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',
@@ -117,6 +118,20 @@ export class TaskListComponent implements OnInit {
         },
       });
     }
+  }
+
+  viewTask(taskId:any,task:any){
+    this.ref = this._dialogService.open(ViewTaskComponent,{
+      header :'Task Detail',
+      width: '30%',
+      baseZIndex: 10000,
+      maximizable : true,
+      resizable: true,
+      draggable:true,
+      data: {
+        rawData: task
+    },
+    });
   }
 
   updateTask(item:any){

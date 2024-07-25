@@ -12,34 +12,31 @@
         ></p-messages>
       </div>
       <div class="card-middle-row">
-        <p-table [tableStyle]="{ 'min-width': '50rem' }" [value]="tasksList">
+        <p-table [tableStyle]="{ 'min-width': '50rem' }"  [value]="tasksList">
           <ng-template pTemplate="header">
             <tr>
-              <th>Task</th>
-              <th>Description</th>
-              <th>Status</th>
-              <th>Action</th>
+              <th style="text-align: center;">Task</th>
+              <th style="text-align: center;">Description</th>
+              <th style="text-align: center;">Status</th>
+              <th style="text-align: center;">Action</th>
             </tr>
           </ng-template>
           <ng-template pTemplate="body" let-taskItem>
             <tr>
-              <td>{{ taskItem.taskName }}</td>
-              <td>{{ taskItem.taskDescription }}</td>
-              <td>{{ taskItem.completed ? "Completed" : "Pending" }}</td>
-              <td>
+              <td style="text-align: center;">{{ taskItem.taskName }}</td>
+              <td style="text-align: center;">{{ taskItem.taskDescription }}</td>
+              <td style="text-align: center;">
                 <ng-container *ngIf="taskItem.completed">
-                  <p-button
-                    icon="pi pi-check"
-                    styleClass="p-button-rounded p-button-success p-button-text"
-                    pTooltip="Completed Task"
-                    tooltipPosition="top"
-                    placeholder="Top"
-                  ></p-button>
+                <p-button
+                  icon="pi pi-check"
+                  styleClass="p-button-rounded p-button-success p-button-text"
+                  pTooltip="Completed Task"
+                  tooltipPosition="top"
+                  placeholder="Top"
+                ></p-button>
                 </ng-container>
-                
                 <ng-container *ngIf="!taskItem.completed">
-                  <div class="action-btns">
-                    <div
+                  <div
                       style="display: flex; justify-content: center; gap: 2px"
                     >
                       <p-confirmDialog
@@ -54,6 +51,23 @@
                       (onClick)="statusChange(taskItem.id)"
                     ></p-button>
                     </div>
+                </ng-container>
+                
+              </td>
+              <td style="text-align: center;">
+                <ng-container *ngIf="taskItem.completed">
+                  <p-button
+                    icon="pi pi-eye"
+                    styleClass="p-button-rounded p-button-secondary  p-button-text"
+                    pTooltip="View Task"
+                    tooltipPosition="top"
+                    placeholder="Top"
+                    (onClick)="viewTask(taskItem.id,taskItem)"
+                  ></p-button>
+                </ng-container>
+                <ng-container *ngIf="!taskItem.completed">
+                  <div class="action-btns">
+                    
                     <p-button
                       icon="pi pi-pencil"
                       styleClass="p-button-rounded p-button-secondary p-button-text"
@@ -79,8 +93,18 @@
                         (click)="deleteTask(taskItem.id)"
                       ></p-button>
                     </div>
+
+                    <p-button
+                    icon="pi pi-eye"
+                    styleClass="p-button-rounded p-button-secondary  p-button-text"
+                    pTooltip="View Task"
+                    tooltipPosition="top"
+                    placeholder="Top"
+                    (onClick)="viewTask(taskItem.id,taskItem)"
+                  ></p-button>
                   </div>
                 </ng-container>
+                
               </td>
             </tr>
           </ng-template>

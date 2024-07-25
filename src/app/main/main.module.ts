@@ -6,12 +6,14 @@ import { PrimengSharedModule } from '../common/primeng-shared/primeng-shared.mod
 import { TaskListComponent } from './task-list/task-list.component';
 import { AddTaskComponent } from './task-list/add-task/add-task.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ViewTaskComponent } from './task-list/view-task/view-task.component';
 
 
 @NgModule({
   declarations: [
     TaskListComponent,
-    AddTaskComponent
+    AddTaskComponent,
+    ViewTaskComponent
   ],
   imports: [
     CommonModule,
