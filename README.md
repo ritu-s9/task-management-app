@@ -1,6 +1,6 @@
-# TaskManagementApp
+#  Task Management App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.11.
+This project is a Task Management App built using Angular 15. It leverages a JSON server for data storage and adheres to the OpenAPI Specification to ensure a  API design.
 
 ## Development server
 
