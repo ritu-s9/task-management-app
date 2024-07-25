@@ -25,36 +25,40 @@ export class TaskListComponent implements OnInit {
     this.getAllTasks();
   }
 
-  statusChange(taskId?: number) {
+  statusChange(taskId: number) {
     console.log(taskId);
     this._confirmService.confirm({
-      message: 'Are you want to change the status?',
+      message: 'Are you sure you want to change the status?',
       header: 'Confirmation',
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
-        for (let i = 0; i <= this.tasksList.length; i++) {
-          if (this.tasksList[i].id === taskId) {
-            this.tasksList[i].completed = !this.tasksList[i].completed;
-            this._manageTasksService.updateTasks(taskId,this.tasksList[i]).subscribe({
-              next: (res) => {
-               this.getAllTasks();
-                this.messageShowingFlag = true;
-                this.messages = [
-                  {
-                    severity: 'success',
-                    summary: 'Success',
-                    detail: 'Task Completed',
-                  },
-                ];
-                setTimeout(() => {
-                  this.messageShowingFlag = false;
-                }, 2000);
-            
-          }
-        })
-      }
-      break;
-    }
+        // Find the index of the task with the given taskId
+        const taskIndex = this.tasksList.findIndex(task => task.id === taskId);
+  
+        if (taskIndex !== -1) {
+          // Toggle the task completion status
+          this.tasksList[taskIndex].completed = !this.tasksList[taskIndex].completed;
+  
+          // Update the task through the service
+          this._manageTasksService.updateTasks(taskId, this.tasksList[taskIndex]).subscribe({
+            next: (res) => {
+              this.getAllTasks();
+              this.messageShowingFlag = true;
+              this.messages = [
+                {
+                  severity: 'success',
+                  summary: 'Success',
+                  detail: 'Task status updated',
+                },
+              ];
+              setTimeout(() => {
+                this.messageShowingFlag = false;
+              }, 2000);
+  
+              this._confirmService.close();
+            }
+          });
+        }
       },
       reject: () => {
         this.messageShowingFlag = true;
@@ -64,11 +68,11 @@ export class TaskListComponent implements OnInit {
         setTimeout(() => {
           this.messageShowingFlag = false;
         }, 2000);
-        this._confirmService.close(); 
+        this._confirmService.close();
       },
     });
-    
   }
+  
 
   getAllTasks() {
     this._manageTasksService.getTasks().subscribe({
@@ -103,6 +107,18 @@ export class TaskListComponent implements OnInit {
             },
             error: (err) => {
               // Handle error if needed
+              this.messageShowingFlag = true;
+              this.messages = [
+                {
+                  severity: 'Failure',
+                  summary: 'Error',
+                  detail: 'Error deleting the task',
+                },
+              ];
+              setTimeout(() => {
+                this.messageShowingFlag = false;
+              }, 2000);
+              this._confirmService.close();
             },
           });
         },
