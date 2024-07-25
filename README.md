@@ -14,6 +14,7 @@ This project is a Task Management App built using Angular 15. It leverages a JSO
 
 **Server:** Json Server
 
+
 ## API Reference
 
 #### Get all tasks
@@ -36,7 +37,35 @@ This project is a Task Management App built using Angular 15. It leverages a JSO
 | :------- | :------------------------- |
 | `string` |to delete the particular id |
 
+#### Add task
 
+```http
+  POST /tasks , data
+```
+
+| Type     | Description                |
+| :------- | :------------------------- |
+| `string` |to add a task |
+
+#### Update task
+
+```http
+  PUT /tasks/${id} ,data
+```
+
+| Type     | Description                |
+| :------- | :------------------------- |
+| `string` |to Update the particular task by id |
+
+#### View task
+
+```http
+  GET /tasks/${id}
+```
+
+| Type     | Description                |
+| :------- | :------------------------- |
+| `string` |to get the particular task |
 
 ## Features
 
@@ -45,6 +74,15 @@ This project is a Task Management App built using Angular 15. It leverages a JSO
 - ### Delete Tasks
     - Delete a particular task by selected ID.
     - Show a confirmation message to confirm the delete operation.
+
+- ### Add Tasks
+    - create a task.
+
+- ### Update Tasks
+    - Update a particular task by selected ID.
+- ### Status Change of the Tasks
+    - change the status of a particular task by selected ID.
+    - Show a confirmation message to confirm the updation operation.
 
 ## Development server
 
