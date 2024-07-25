@@ -31,14 +31,29 @@
                   <p-button
                     icon="pi pi-check"
                     styleClass="p-button-rounded p-button-success p-button-text"
+                    pTooltip="Completed Task"
+                    tooltipPosition="top"
+                    placeholder="Top"
                   ></p-button>
                 </ng-container>
+                
                 <ng-container *ngIf="!taskItem.completed">
                   <div class="action-btns">
+                    <div
+                      style="display: flex; justify-content: center; gap: 2px"
+                    >
+                      <p-confirmDialog
+                        [style]="{ width: '50vw' }"
+                      ></p-confirmDialog>
                     <p-button
                       icon="pi pi-clock"
                       styleClass="p-button-rounded p-button-secondary p-button-text"
+                      pTooltip="Pending Task"
+                      tooltipPosition="top"
+                      placeholder="Top"
+                      (onClick)="statusChange(taskItem.id)"
                     ></p-button>
+                    </div>
                     <p-button
                       icon="pi pi-pencil"
                       styleClass="p-button-rounded p-button-secondary p-button-text"

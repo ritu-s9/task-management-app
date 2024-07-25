@@ -24,6 +24,51 @@ export class TaskListComponent implements OnInit {
     this.getAllTasks();
   }
 
+  statusChange(taskId?: number) {
+    console.log(taskId);
+    this._confirmService.confirm({
+      message: 'Are you want to change the status?',
+      header: 'Confirmation',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        for (let i = 0; i <= this.tasksList.length; i++) {
+          if (this.tasksList[i].id === taskId) {
+            this.tasksList[i].completed = !this.tasksList[i].completed;
+            this._manageTasksService.updateTasks(taskId,this.tasksList[i]).subscribe({
+              next: (res) => {
+               this.getAllTasks();
+                this.messageShowingFlag = true;
+                this.messages = [
+                  {
+                    severity: 'success',
+                    summary: 'Success',
+                    detail: 'Task Completed',
+                  },
+                ];
+                setTimeout(() => {
+                  this.messageShowingFlag = false;
+                }, 2000);
+            
+          }
+        })
+      }
+      break;
+    }
+      },
+      reject: () => {
+        this.messageShowingFlag = true;
+        this.messages = [
+          { severity: 'info', summary: 'Info', detail: 'Operation Cancelled' },
+        ];
+        setTimeout(() => {
+          this.messageShowingFlag = false;
+        }, 2000);
+        this._confirmService.close(); 
+      },
+    });
+    
+  }
+
   getAllTasks() {
     this._manageTasksService.getTasks().subscribe({
       next: (res) => {
